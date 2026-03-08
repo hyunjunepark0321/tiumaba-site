@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>티움 ABA 사회성연구소</title>
+
+    <link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+    <link href="/CSS/board_style.css" rel="stylesheet" type="text/css" />
+
+    <style>
+      .letter-section {
+        padding: 70px 20vw 40px;
+      }
+      .image-container {
+        background-image: url("./CSS/image/page_thumnail/default.jpg");
+      }
+      .kboard-list-date {
+        white-space: nowrap;
+      }
+      @media (max-width: 768px) {
+        .letter-section {
+          padding: 70px 5% 1px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main>
+      <div class="image-container">
+        <div class="overlay"></div>
+        <div class="centered-text">공지사항</div>
+      </div>
+
+      <div class="letter-background">
+        <div class="letter-section">
+          <div id="kboard-default-list">
+            <!-- 리스트 -->
+            <div class="kboard-list">
+              <table>
+                <thead>
+                  <tr>
+                    <td class="kboard-list-uid">번호</td>
+                    <td class="kboard-list-title">제목</td>
+                    <td class="kboard-list-user">작성자</td>
+                    <td class="kboard-list-date">작성일</td>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr class="kboard-list-notice">
+                    <td class="kboard-list-uid">공지사항</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=6">
+                        <div class="kboard-default-cut-strings">
+                          [공지] [송도연구소] 고학년 언어장애아동을 위한
+                          독서토론 그룹수업 모집
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">23.02.06</td>
+                  </tr>
+
+                  <tr class="kboard-list-notice">
+                    <td class="kboard-list-uid">공지사항</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=5">
+                        <div class="kboard-default-cut-strings">
+                          [협력기관 개소] 대전 티움의사소통연구소
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">22.09.03</td>
+                  </tr>
+
+                  <tr class="kboard-list-notice">
+                    <td class="kboard-list-uid">공지사항</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=4">
+                        <div class="kboard-default-cut-strings">
+                          [공지사항][외부강의] 산만한 우리아이 집중력 높이기
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">22.09.02</td>
+                  </tr>
+
+                  <tr class="kboard-list-notice">
+                    <td class="kboard-list-uid">공지사항</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=3">
+                        <div class="kboard-default-cut-strings">
+                          [공지] 티움ABA사회성연구소 영종체험교실 안내
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">21.10.15</td>
+                  </tr>
+
+                  <tr class="kboard-list-notice">
+                    <td class="kboard-list-uid">공지사항</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=2">
+                        <div class="kboard-default-cut-strings">
+                          [공지] 특수학교 위기개입-행동중재
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">21.10.15</td>
+                  </tr>
+
+                  <tr class="kboard-list-notice">
+                    <td class="kboard-list-uid">공지사항</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=1">
+                        <div class="kboard-default-cut-strings">
+                          안녕하세요!
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">19.12.24</td>
+                  </tr>
+
+                  <tr>
+                    <td class="kboard-list-uid">8</td>
+                    <td class="kboard-list-title">
+                      <a href="/post.html?id=7">
+                        <div class="kboard-default-cut-strings">
+                          티움ABA사회성연구소 부설 슈퍼비전센터 개소_목동
+                        </div>
+                      </a>
+                    </td>
+                    <td class="kboard-list-user">Tium</td>
+                    <td class="kboard-list-date">23.12.20</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- 페이징 (고정) -->
+            <div class="kboard-pagination">
+              <ul class="kboard-pagination-pages">
+                <li class="active"><a href="#" onclick="return false">1</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <button id="scrollToTopBtn" class="scroll-to-top">
+      <img src="/CSS/image/icon/top_btn.png" alt="Top" />
+    </button>
+
+    <script>
+      fetch("header.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+          const script = document.createElement("script");
+          script.src = "/JS/header.js";
+          document.body.appendChild(script);
+        });
+
+      fetch("footer.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("footer-placeholder").innerHTML = data;
+        });
+    </script>
+
+    <script src="/JS/scrollToTop.js"></script>
+  </body>
+</html>

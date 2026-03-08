@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.png');
+}
+    /* iframe을 반응형으로 만드는 스타일 */
+    .responsive-iframe {
+        position: relative;
+        width: 100%; /* 부모 요소의 너비를 따라감 */
+        height: 0; /* 높이를 0으로 설정하고 아래 패딩 비율로 높이를 정의 */
+        padding-bottom: 75%; /* 4:3 비율 유지 (450 / 600 * 100%) */
+    }
+
+    .responsive-iframe iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; /* 부모 요소의 너비에 맞춤 */
+        height: 100%; /* 부모 요소의 높이에 맞춤 */
+        border: 0; /* 테두리 제거 */
+    }
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">연구소 오시는길</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+        
+                    <hr>
+    <p><strong>[송도연구소]인천광역시 연수구 송도1동 컨벤시아대로 81 드림시티 321호</strong></p>
+    <hr>
+    <p><div class="responsive-iframe">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3169.785640039881!2d126.64796751475221!3d37.39490137983042!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b77a0e158f809%3A0xc60ddbcbb58c8297!2z7J247LKc6rSR7Jet7IucIOyXsOyImOq1rCDshqHrj4Qx64-ZIOy7qOuypOyLnOyVhOuMgOuhnCA4MQ!5e0!3m2!1sko!2skr!4v1572324018956!5m2!1sko!2skr"
+            allowfullscreen="allowfullscreen"
+        ></iframe>
+    </div></p>
+    <p><strong>대중교통 이용시</strong></p>
+    <p>버스<br>
+    인천 16번, 광역 1301번, 버스 303,303-1,320,330번 해양경찰청 정류장 하차 후 도보 70m<br>
+    인천 8번, 순환 92번, 버스 780-1번 송도풍림아이원 2단지 정류장 하차 후 도보 120m</p>
+    <p>지하철<br>
+    인천지하철 인천대입구 역 4번출구 진출&nbsp;→<br>
+    약 400m 직진 후 송도 쉐라톤 호텔 사거리에서 2개의 횡단보도 이용 후 해양경찰청 방향 약 300m 직진 →<br>
+    해양경찰청 다음 드림시티 빌딩 321호(3층)</p>
+    <p><strong>자가용 이용시</strong></p>
+    <p>송도 2교 이용. 송도 이안 앞에서 좌회전 →<br>
+    첫번째 교차로에서 우회전 후 약 100m 직진 →<br>
+    드림시티 건물 지하주차장 진입.</p>
+    <p>✓ 2시간 주차권을 이용하실 수 있습니다.</p>
+    <hr>
+    <div class="text-center">
+        <ul class="nav pagination pagination-primary">
+            <li style="margin-bottom: 10px;"><span class="page-numbers current">1. 티움ABA 사회성연구소(인천) 오시는길</span></li><br>
+            <li style="margin-bottom: 37px;"><a href="/direction2.html">2. 티움ABA 사회성연구소(노원) 오시는길</a></li>
+            <li><a href="/direction3.html">3. 티움ABA ESDM연구소(목동) 오시는길</a></li>   
+        </ul>
+    </div>				
+                
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

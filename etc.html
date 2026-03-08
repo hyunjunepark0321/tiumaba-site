@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+
+.responsive-img {
+    width: auto;
+    max-width: 600px;
+    height: auto;
+    display: block;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .responsive-img {
+    width: 100%;
+}
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">그 밖의 평가 도구</div>
+		</div>
+        <div class="letter-background">
+            <div class="letter-section">
+              
+                    <hr>
+    <p><strong>SCERTS 모델</strong></p>
+    <p><img decoding="async" src="/CSS/image/check_pic/etc1.png" alt="" class="responsive-img"></p>
+    <p><span>SCERTS 모델은 발달적이고 관계-중심이면서도 기술-중심의 획기적이고 종합적인 접근으로 자폐 범주성 장애 아동의 일생에 걸쳐서 의사소통 및 사회 정서 능력을 향상시킬 수 있는 틀을 제공한다. 세계적으로 인정된 전문가들에 의해서 20년 이상의 연구를 통하여 개발되었으며, 사회 의사소통(Social Communication), 정서 조절(Emotional Regulation), 교류 지원(Transactional Support)의 세 영역에서의 발달적 진보를 지원한다. ‘SCERTS’라는 명칭도 위에 제시된 영어의 머리글자를 따서 만든 것이다.</span></p>
+    <p>[출처: 학지사]</p>
+    <h3 class=" px-3 mb-4"><strong><span style="font-size: 14pt;">한국 아동 메타-화용언어 검사(KOPLAC)</span></strong></h3>
+    <p><img decoding="async" src="/CSS/image/check_pic/etc2.png" alt="" class="responsive-img"></p>
+    <p>[출처: 아이소리몰 <a href="https://isorimall.com/catalog/ProdDetail.asp?cate1=1000&amp;cate2=&amp;pid=bea0044">https://isorimall.com/catalog/ProdDetail.asp?cate1=1000&amp;cate2=&amp;pid=bea0044</a>]</p>
+    <hr>
+              
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

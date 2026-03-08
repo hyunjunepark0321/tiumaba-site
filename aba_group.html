@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">ABA 사회성그룹</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+             
+                    <hr>
+    <p>ASD의 두드러지는 특징 중 하나는 사회성의 결핍입니다. 이를 보완하는 방법 중 하나로 티움ABA는 ABA사회성그룹 프로그램을 진행하고 있습니다.</p>
+    <p>사회성그룹 프로그램을 통해 아이는 부족한 사회적 기술을 배울 수 있습니다.</p>
+    <p>
+    사회성 발달에 어려움이 있는 아동은 사회적 행동을 자연스럽게 습득하는 것이 어렵기 때문에, 비슷한 어려움을 가진 아이들과 놀이를 포함한 다양한 기법을 이용해 즐겁게 사회적인 기술들 습득할 수 있습니다. 또한 사회적 교류를 통해 생기는 갈등이나 감정을 표출하고 해결하는 방법을 알아가게 됩니다.</p>
+    <p><em>배운 기술을 실제로 사용하는 경험을 합니다</em><br>
+    기술이 있어도 경험이 부족하면 실행에 옮기기 어려운 경우가 많습니다. 따라서 사회성그룹 프로그램은 구조화된 환경에서 동기부여를 통해 배운 기술들을 반복해서 경험할 수 있도록 합니다. 반복적인 성공경험은 아이에게 성취감과 자신감을 부여해 일반적인 환경에서도 습득한 기술을 사용할 수 있게 됩니다.</p>
+    <p>티움ABA 사회성연구소의 사회성그룹 프로그램은 비슷한 발달정도를 보이는 아이들을 선정하여 그룹을 만들고, 상호소통이 이루어지도록 합니다.</p>
+    <p>티움ABA의 프로그램은 2~3명의 치료사가 진행합니다. 따라서 아이들의 행동을 개개인별로 관찰하고 지속적인 모니터링이 가능하다는 장점이 있습니다. 또한 매 세션 진행 후 부모님들과의 면담을 통해 치료결과를 보고하고 상담함으로서, 부모님의 이해를 돕고 장단기적인 치료계획의 수정 보완이 이루어질 수 있습니다.</p>
+    <hr>
+            
+			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

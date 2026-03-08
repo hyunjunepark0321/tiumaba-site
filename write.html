@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link href="/CSS/common_style.css" rel="stylesheet" type="text/css">
+    <link href="/CSS/board_style.css" rel="stylesheet" type="text/css">
+    <style>
+        .letter-section {
+            padding: 70px 20vw 40px;
+        }
+        .image-container {
+            background-image: url('./CSS/image/page_thumnail/default.jpg');
+        }
+        @media (max-width: 768px) {
+            .letter-section {
+                padding: 70px 5% 1px;
+            }
+        }
+        * {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+            <div class="overlay"></div>
+            <div class="centered-text">공지사항</div>
+        </div>
+        <div class="letter-background">
+            <div class="letter-section">
+                <div id="kboard-default-editor">
+                    <form id="editForm" class="kboard-form form-group" enctype="multipart/form-data">
+                        <div class="kboard-attr-row kboard-attr-title required">
+                            <label class="attr-name" for="title"><span class="field-name">제목</span> <span class="attr-required-text">*</span></label>
+                            <div class="attr-value form-group">
+                                <input type="text" id="title" name="title" class="required form-control" value="">
+                            </div>
+                        </div>
+                        <div class="kboard-attr-row kboard-attr-author">
+                            <label class="attr-name" for="author"><span class="field-name">작성자</span></label>
+                            <div class="attr-value form-group">
+                                <input type="text" id="author" name="author" class="form-control" value="관리자">
+                            </div>
+                        </div>
+                        <div class="kboard-attr-row kboard-attr-option">
+                            <label class="attr-name" for="is_notice"><span class="field-name">옵션</span></label>
+                            <div class="attr-value">
+                                <label class="attr-value-option"><input type="checkbox" id="is_notice" name="is_notice"> 공지사항</label>
+                            </div>
+                        </div>
+                        <div class="kboard-attr-row kboard-attr-content">
+                            <label class="attr-name" for="content"><span class="field-name">내용</span></label>
+                            <div class="kboard-content form-group">
+                                <textarea id="content" class="editor-textarea form-control" name="content" placeholder=""></textarea>
+                            </div>
+                        </div>
+                        <div class="kboard-control">
+                            <div class="left">
+                                <button type="submit" style="margin-bottom: 20px;margin-top:20px;" class="kboard-default-button-small">저장하기</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+    <button id="scrollToTopBtn" class="scroll-to-top">
+        <img src="/CSS/image/icon/top_btn.png" alt="Top" />
+    </button>
+
+    <script>
+        // Header와 Footer 삽입
+        fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        })
+        .then(() => {
+            // header.html이 로드된 후에 header.js를 로드
+            const script = document.createElement('script');
+            script.src = '/JS/header.js';
+            document.body.appendChild(script);
+        });
+
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+
+        // URL에서 id 파라미터 추출
+        const urlParams = new URLSearchParams(window.location.search);
+        const postId = urlParams.get('id');
+
+        // 데이터 로드 및 폼 초기화
+        if (postId) {
+            fetch(`https://tiumesdm.com/api/posts/${postId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('게시글 데이터를 가져올 수 없습니다.');
+                    }
+                    return response.json();
+                })
+                .then(post => {
+                    document.getElementById('title').value = post.title;
+                    document.getElementById('author').value = post.author || '관리자'; // 기본값 '관리자'
+                    document.getElementById('content').value = post.content;
+                    document.getElementById('is_notice').checked = post.is_notice === 1;
+                })
+                .catch(err => {
+                    console.error('API 호출 에러:', err);
+                    alert('게시글 데이터를 불러오는 중 오류가 발생했습니다.');
+                });
+        }
+
+        // 저장 이벤트
+        document.getElementById('editForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+
+            const title = document.getElementById('title').value.trim();
+            const author = document.getElementById('author').value.trim();
+            const content = document.getElementById('content').value.trim();
+            const is_notice = document.getElementById('is_notice').checked ? 1 : 0;
+
+            if (!title || !content) {
+                alert('제목과 내용을 모두 입력해야 합니다.');
+                return;
+            }
+
+            const method = postId ? 'PUT' : 'POST';
+            const apiUrl = postId 
+                ? `https://tiumesdm.com/api/posts/${postId}`
+                : `https://tiumesdm.com/api/posts`;
+
+            fetch(apiUrl, {
+                method,
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title, author, content, is_notice }),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('게시글 저장에 실패했습니다.');
+                    }
+                    return response.json();
+                })
+                .then(() => {
+                    alert('게시글이 성공적으로 저장되었습니다.');
+                    window.location.href = 'notice.html'; // 목록으로 이동
+                })
+                .catch(err => {
+                    console.error('게시글 저장 에러:', err);
+                    alert('게시글 저장 중 오류가 발생했습니다.');
+                });
+        });
+    </script>
+    <script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

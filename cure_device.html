@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">치료용 교구 제작</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+	
+                    <hr>
+    <p>ABA프로그램을 진행할 때, 아동이 선호하는 강화물은 모두 다릅니다. 어떤 아이는 직물의 촉감을 좋아하기도 하고, 어떤 아이는 동그란 모양의 물건에 관심을 가질 수 있습니다.</p>
+    <p>아이가 선호하는 강화물을 이용해 교육을 진행하면 <em>개개인에 맞춤화된 목적을 비교적 쉽게 성취할 수 있다는 이점이 있습니다.</em> 하지만 시중에 나와있는 어떤 교구도 아이에게 맞는 교구가 아닌 경우가 있습니다. 이럴 경우 티움ABA는 개개인에게 맞는 교구를 직접 제작하여 이용합니다.</p>
+    <p>아래 사진은 지금까지 티움에서 제작한 맞춤형 교구의 일부입니다.</p>
+    <p>    <img decoding="async" src="/CSS/image/program_pic/cure1.jpg" alt="" class="responsive-img"></p>
+    <hr>
+            
+			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

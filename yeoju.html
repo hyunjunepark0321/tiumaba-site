@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('/CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">티움 농장(경기 여주)</div>
+		</div>
+        <div class="letter-background">
+            <div class="letter-section">
+                <hr>
+                <p>아이들이 작은 가축들과 직접 교감할 수 있고,<br>
+                과수원과 텃밭에서 작물을 기르는 기쁨도 느낄 수 있습니다.<br>
+                더불어,&nbsp;빌딩숲인 도시에서 벗어나 안전하게 마음껏 뛰어 놀 수 있습니다.<br>
+                티움의 농장, 사진으로 만나보세요.</p>
+                <p>티움농장에 대한 더 많은 정보는 <a href="http://tiumcarefarm.org/">http://tiumcarefarm.org/</a>를 참고해 주세요.🙂</p>
+                <p>
+                    <img decoding="async" src="/CSS/image/place_pic/yeo1.jpg" alt="" class="responsive-img">
+                    <img decoding="async" src="/CSS/image/place_pic/yeo2.jpg" alt="" class="responsive-img">
+                    <img decoding="async" src="/CSS/image/place_pic/yeo3.jpg" alt="" class="responsive-img">
+                    <img decoding="async" src="/CSS/image/place_pic/yeo4.jpg" alt="" class="responsive-img">
+                    <img decoding="async" src="/CSS/image/place_pic/yeo5.jpg" alt="" class="responsive-img">
+                    <img decoding="async" src="/CSS/image/place_pic/yeo6.jpg" alt="" class="responsive-img">
+                </p>
+                <hr>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">특징</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+					<hr>
+	<p>ASD를 가진 아이들은 사회성과 언어능력에서 부족함을 보입니다. 그래서 타인과의 관계에 있어 자신의 감정을 표현하거나 갈등이 생겼을 때 해결하는데 어려움을 보입니다. 또한 일상의 자연스러운 자극에서 배우는 것을 어려워합니다. ASD를 가진 아동들도 영재성을 가지고 태어나는 경우가 많으나, 안타깝게도 자신이 지닌 장애로 인해 능력을 충분히 꽃피우지 못하는 경우가 상당수 있습니다.</p>
+	<blockquote><p>그래서 티움ABA 사회성연구소는 ABA에 기반한 프로그램들을 통해 자폐성 장애를 가진 아이들이 사회성을 키우고, 자신의 언어로 자신을 표현할 수 있도록 도우려 합니다. 또한 아동 특성에 따른 개별화 교육에 기반한 특수영재교육 프로그램을 통해 아동의 잠재력을 끌어올려 자신감과 유능감을 경험할 수 있도록 지도합니다.</p></blockquote>
+	<p><em>발달기 아동에게 중요한 것은 자유로운 감각의 체험입니다.</em> 발달과정에 도움이 될 뿐 아니라, 자아를 표현하고 싶을 때, 보고 느낀 것이 풍부할수록, 풍부한 표현이 가능하기 때문입니다. 그래서 티움은 여주에 티움체험농장을 꾸몄습니다. 아이들은 동식물과 교감하고, 도시에서는 쉽게 느끼지 못하는 자연의 흙을 만지고, 벌레들과도 만나며, 새로운 경험을 쌓아갑니다. 아이들은 자연의 아름다움을 충분히 느끼며 성장해 나갈 것입니다. 이것이 티움의 ‘숨티움’ 입니다.</p>
+	<p><em>티움은 티움농장을 성장시켜 버섯과 달걀, 신선한 채소 등 다양한 농산물을 생산, 기부/판매하는 사회적 협동조합으로 만들어갈 계획을 가지고 있습니다.</em> 티움농장은 장애를 지닌 이들이 외부의 지원에 기대지 않고 자립하여 당당한 사회의 일원으로 살아가는 공동체를 꿈꿉니다. 현재의 티움농장이 그 ‘싹’이며, 언젠가 꿈을 틔우게 될 것이라 믿습니다. 이것이 티움의 ‘싹틔움’, ‘꿈티움’ 입니다.</p>
+	<blockquote><p>ABA과 ABA를 기반으로 한 사회성그룹 수업과 언어치료를 통해 부족한 사회, 언어능력을 키우고 특수영재교육을 통해 아동의 잠재력을 이끌어내고, 자립공동체를 통해 장애를 가진 아이들과 그 가족들이 행복한 삶을 사는 것, 그것이 티움의 비전입니다.</p></blockquote>
+	<hr>
+			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

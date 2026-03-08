@@ -1,0 +1,574 @@
+<style>
+  /* 헤더 및 고정 스타일 */
+.header_group {
+    width: 100%;
+    position: relative; /* sticky의 기준이 되는 부모 요소 */
+    z-index: 1000;
+    background-color: #fff; /* 초기 투명 배경 */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.logo-container img {
+    width: 350px;
+    height: 50px;
+    object-fit: contain;
+    transition: opacity 0.3s ease; /* 투명도 전환을 부드럽게 설정 */
+}
+
+.logo-container img:hover {
+    opacity: 0.7; /* 투명도를 살짝 낮춰서 흐리게 표현 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+}
+
+/* 네비게이션 메뉴 sticky 설정 */
+.navigation-container {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0); /* 초기 투명 배경 */
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: #555555;
+    transition:color 0.3s ease;
+}
+
+/* 로고 숨김 상태 */
+.logo-container.hidden {
+    display: none;
+}
+
+/* 스크롤 시 네비게이션 바의 흰색 배경과 고정 */
+.navigation-container.scrolled {
+    background-color: rgba(255, 255, 255, 1); /* 불투명 흰색 */
+    position: fixed;
+    top: 0;
+    color: black; /* 텍스트 색상 검정으로 변경 */
+    width: 100%;
+}
+
+.navigation-container.scrolled .caret,
+.navigation-container.scrolled .caret-right {
+    border-color: black; /* 스크롤 시 화살표를 검정색으로 변경 */
+}
+    
+    /* 드롭다운 메뉴 스타일 */
+    .drop_down_menu_group {
+        display: flex;
+        gap: 20px;
+    }
+
+    .drop_down_menu_group > div {
+    position: relative;
+    padding: 10px;
+    }
+
+    /* 투명 막 효과 */
+.drop_down_menu_group > div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%; /* 중앙에서 시작 */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* 얇은 투명 막 */
+    transform: scaleX(0); /* 처음엔 막이 보이지 않음 */
+    transform-origin: center;
+    transition: transform 0.3s ease; /* 트랜지션 효과 */
+    pointer-events: none; /* 투명 막이 클릭을 방해하지 않도록 설정 */
+}
+
+/* 마우스를 올렸을 때 투명 막이 펼쳐짐 */
+.drop_down_menu_group > div:hover::before {
+    transform: scaleX(1); /* 중앙에서 양쪽으로 펼쳐짐 */
+}
+
+.dropdown-content, .sub-dropdown-content {
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    color: black;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px); /* 처음에 약간 위로 이동된 위치에서 시작 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 등장 애니메이션 */
+    pointer-events: none; /* 호버되지 않을 때는 클릭되지 않도록 설정 */
+    left: 0;
+    top: 40px;
+    font-size: 14px;
+}
+
+    
+    .dropdown-content div {
+        padding: 10px;
+        text-align: left;
+        transition: color 0.3s ease;
+    }
+
+    
+.drop_down_menu_group > div:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 내려오면서 보임 */
+    pointer-events: auto; /* 드롭다운이 보일 때는 클릭 가능하도록 설정 */
+}
+
+.dropdown-content a, .sub-dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-align: left;
+    color: royalblue; /* 기본 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    transition: color 0.3s ease, opacity 0.3s ease; /* 색상 및 투명도 전환 */
+}
+
+/* 링크에 마우스를 올렸을 때 스타일 */
+.dropdown-content a:hover, .sub-dropdown-content a:hover {
+    opacity: 0.7; /* 투명도 효과 */
+    color: royalblue; /* 호버 시 동일한 색상 유지 */
+}
+
+/* transition 속성을 제거하여 다른 요소로 스타일 전파 방지 */
+.dropdown-content a, .sub-dropdown-content a {
+    opacity: 1; /* 투명도 효과 */
+    color: black; /* 호버 시 동일한 색상 유지 */
+}
+    
+/* 서브 드롭다운 */
+.sub-dropdown-content {
+    left: 100%;
+    top: 40%;
+    opacity: 0;
+    transition: opacity 0.2s ease; /* 점멸하듯 사라지기 위한 빠른 트랜지션 */
+}
+
+.facility:hover .sub-dropdown-content {
+    opacity: 1;
+    pointer-events: auto; /* 서브 드롭다운 보일 때 클릭 가능하도록 */
+}
+    
+    /* CARET 아이콘 스타일 */
+    .caret {
+        border: solid #000;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        margin: 3px;
+        margin-left: 5px;
+    }
+    
+    .caret-right {
+    display: inline-block;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(45deg); /* 기본 오른쪽 방향 */
+    margin-left: 5px;
+    transition: transform 0.3s ease; /* 회전 애니메이션 */
+    margin-bottom: 1px;
+}
+
+.facility:hover .caret-right {
+    transform: rotate(-45deg); /* 기본 오른쪽 방향 */
+}
+
+    .dropdown-content .caret-right,
+    .sub-dropdown-content .caret-right {
+        border-color: black; /* 드롭다운 화살표를 검정색으로 설정 */
+    }
+    
+    
+    /* 콘텐츠 상단 여백 추가 */
+    body {
+        margin-top: 0px; /* 헤더의 총 높이 */
+    }
+
+    
+    
+    .hamburger-menu{
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-nav  {
+        display: none!important;
+      }
+    }
+    
+    /* 반응형 */
+    @media (max-width: 768px) {
+        .logo-container img {
+          width: auto;
+          height: 38px;
+        }
+
+        .centered-text {
+          word-break: normal;
+        }
+
+        .description {
+          padding-right: 0!important;
+        }
+    
+        .drop_down_menu_group {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+    
+        .drop_down_menu_group > div {
+            width: 100%;
+            text-align: left;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            background-color: transparent;
+            background-color: #fff;
+            padding-left: 30px;
+        }
+
+        .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    position: relative;
+    margin-left: 10px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bar1 {
+    transform-origin: top left;
+}
+
+.bar2 {
+    opacity: 1;
+}
+
+.bar3 {
+    transform-origin: bottom left;
+}
+
+.hamburger-menu.open .bar1 {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.open .bar2 {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar3 {
+    transform: rotate(-45deg);
+}
+
+.mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+            background-color: #fff;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        #mobileNav > ul > li.has-submenu.open > ul > li.has-submenu > ul::after {
+          right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .mobile-nav .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding-left: 15px;
+        }
+
+        .mobile-nav .submenu.open {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .mobile-nav .has-submenu::after {
+            content: "\25BC";
+            float: right;
+            transition: transform 0.3s;
+            position: absolute;
+        right: 10px; /* Position the arrow to stay at the right */
+        top: 50%; /* Vertically center the arrow */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+        }
+
+        .mobile-nav .has-submenu.open::after {
+            transform: rotate(180deg);
+            top: 5%;
+        }
+
+        
+
+        .mobile-nav .has-submenu {
+        position: relative;
+        padding-right: 20px; /* Add space to the right for the arrow */
+        
+    }
+
+
+.navigation-container {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        background-color: #fff;
+        color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+    .navigation-container.open {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        overflow: hidden;
+        animation: fadeInDown 0.3s ease-in-out;
+        padding: 0;
+        
+    }
+
+    .drop_down_menu_group > div:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    width: 100%;
+    position: absolute;
+ 
+    }
+    
+
+    .logo-container.hidden {
+        display: none;
+    }
+
+    .navigation-container a, .caret, .caret-right {
+    color: #333;
+    border-color: #333!important;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    }
+
+    @keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.navigation-container.closing {
+    animation: fadeOutUp 0.3s ease-in-out;
+}
+
+input:focus{
+	outline:none;
+    -webkit-tap-highlight-color : transparent
+}
+
+.mobile-nav:focus {
+    -webkit-tap-highlight-color: transparent;
+}
+
+
+.mobile-nav a {
+    color: #333; /* Set text color to #333 */
+    -webkit-tap-highlight-color: transparent;
+}
+
+    @media (min-width: 768px) {
+    .mobile-nav  {
+      display: none!important;
+    }
+  }
+    
+    </style>
+        <div style="position: absolute; top:0; left: 0;width: 100%; height: 100%;">
+            <div class="header_group">
+                <div class="logo-container">
+                    <a class="navbar-brand" href="/index.html" title="티움 ABA">
+                        <img src="CSS/image/tium_logo.png" alt="티움 ABA">
+                    </a>
+                    <div class="hamburger-menu" id="hamburger">
+                        <div class="bar bar1"></div>
+                        <div class="bar bar2"></div>
+                        <div class="bar bar3"></div>
+                    </div>
+                        <!-- 모바일버전 네비바 -->
+                    <div class="mobile-nav" id="mobileNav">
+                      <ul>
+                          <li class="has-submenu">소개
+                              <ul class="submenu">
+                                  <li><a href="/introduce.html">함께하는 사람들</a></li>
+                                  <li class="has-submenu">시설 둘러보기
+                                      <ul class="submenu">
+                                          <li><a href="/incheon.html">티움ABA 사회성 연구소(인천)</a></li>
+                                          <li><a href="/nowon.html">티움ABA 사회성 연구소(노원)</a></li>
+                                          <li><a href="/mokdong.html">티움ABA ESDM 연구소(목동)</a></li>
+                                          <li><a href="/yeongjong.html">영종 연구소(인천 영종)</a></li>
+                                          <li><a href="/yeoju.html">티움 농장(경기 여주)</a></li>
+                                      </ul>
+                                  </li>
+                                  <li><a href="/direction.html">연구소 오시는 길</a></li>
+                              </ul>
+                          </li>
+                          <li class="has-submenu">자페스펙트럼과 ABA
+                              <ul class="submenu">
+                                  <li><a href="/asd.html">자페스펙트럼</a></li>
+                                  <li><a href="/aba.html">ABA</a></li>
+                                  <li><a href="/esdm.html">ESDM</a></li>
+                              </ul>
+                          </li>
+                          <li><a href="/feature.html" style="color: #333;">특징</a></li>
+                          <li class="has-submenu">프로그램
+                              <ul class="submenu">
+                                  <li><a href="/aba_esdm.html">ABA/ESDM</a></li>
+                                  <li><a href="/aba_group.html">ABA 사회성그룹</a></li>
+                                  <li><a href="/j_program.html">특수영재 프로그램</a></li>
+                                  <li><a href="/lang_cure.html">언어치료</a></li>
+                                  <li><a href="/nature.html">생태교육</a></li>
+                                  <li><a href="/parent.html">부모교육</a></li>
+                                  <li><a href="/cure_device.html">치료용 교구 제작</a></li>
+                                  <li><a href="/boardbook.html">상황인지 사회성보드북</a></li>
+                              </ul>
+                          </li>
+                          <li class="has-submenu">검사
+                              <ul class="submenu">
+                                  <li><a href="/esdm_check.html">ESDM Check List(부모보고)</a></li>
+                                  <li><a href="/brain_check.html">전두엽 기능검사</a></li>
+                                  <li><a href="/intel_check.html">지능 및 언어검사</a></li>
+                                  <li><a href="/etc.html">그 밖의 평가 도구</a></li>
+                              </ul>
+                          </li>
+                          <li class="has-submenu">게시판
+                              <ul class="submenu">
+                                  <li><a href="/notice.html">공지사항</a></li>
+                                  <li><a href="/form.html">상담신청</a></li>
+                              </ul>
+                          </li>
+                      </ul>
+                  </div>
+                </div>
+                <div class="navigation-container">
+                    <div class="drop_down_menu_group">
+                        <div class="introduce"><a href="/introduce.html" style="color: #555555;">소개</a><span class="caret"></span>
+                            <div class="dropdown-content">
+                                <div><a href="/introduce.html">함께하는 사람들</a></div>
+                                <div class="facility"><a href="/incheon.html">시설 둘러보기<span class="caret-right"></span></a>
+                                    <div class="sub-dropdown-content" style="white-space: nowrap">
+                                        <div><a href="/incheon.html">티움ABA 사회성연구소(인천)</a></div>
+                                        <div><a href="/nowon.html">티움ABA 사회성연구소(노원)</a></div>
+                                        <div><a href="/mokdong.html">티움ABA ESDM 연구소(목동)</a></div>
+                                        <div><a href="/yeongjong.html">영종 연구소(인천 영종)</a></div>
+                                        <div><a href="/yeoju.html">티움 농장(경기 여주)</a></div>
+                                    </div>
+                                </div>
+                                <div><a href="/direction.html">연구소 오시는 길</a></div>
+                            </div>
+                        </div>
+                        <div class="ASD_aba"><a href="/asd.html" style="color: #555555;">자페스펙트럼과 ABA<span class="caret"></span></a>
+                            <div class="dropdown-content">
+                                <div><a href="/asd.html">자페스펙트럼</a></div>
+                                <div><a href="/aba.html">ABA</a></div>
+                                <div><a href="/esdm.html">ESDM</a></div>
+                            </div>
+                        </div>
+                        <div class="feature"><a href="/feature.html" style="color: #555555;">특징</a></div>
+                        <div class="program"><a href="/aba_esdm.html" style="color: #555555;">프로그램<span class="caret"></span></a>
+                            <div class="dropdown-content"  style="white-space: nowrap">
+                                <div><a href="/aba_esdm.html">ABA/ESDM</a></div>
+                                <div><a href="/aba_group.html">ABA 사회성그룹</a></div>
+                                <div><a href="/j_program.html">특수영재 프로그램</a></div>
+                                <div><a href="/lang_cure.html">언어치료</a></div>
+                                <div><a href="/nature.html">생태교육</a></div>
+                                <div><a href="/parent.html">부모교육</a></div>
+                                <div><a href="/cure_device.html">치료용 교구 제작</a></div>
+                                <div><a href="/boardbook.html">상황인지 사회성보드북</a></div>
+                            </div>
+                        </div>
+                        <div class="test"><a href="/esdm_check.html" style="color: #555555;">검사<span class="caret"></span></a>
+                            <div class="dropdown-content"  style="white-space: nowrap">
+                                <div><a href="/esdm_check.html">ESDM Check List(부모보고)</a></div>
+                                <div><a href="/brain_check.html">전두엽 기능검사</a></div>
+                                <div><a href="/intel_check.html">지능 및 언어검사</a></div>
+                                <div><a href="/etc.html">그 밖의 평가 도구</a></div>
+                            </div>
+                        </div>
+                        <div class="board"><a href="/notice.html" style="color: #555555;">게시판<span class="caret"></span></a>
+                            <div class="dropdown-content">
+                                <div><a href="/notice.html">공지사항</a></div>
+                                <div><a href="/form.html">상담신청</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

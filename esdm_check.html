@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">ESDM Check List(부모보고)</div>
+		</div>
+        <div class="letter-background">
+            <div class="letter-section">
+                <div class="col-md-8 page-content-wrap  col-md-offset-2">
+                    <hr>
+    <p><span style="font-size: 12pt;">Sally J. Rogers의 <em>어린 자폐증 아동을 위한 ESDM</em>을 이용해 부모보고를 하고 있습니다. 아래 이미지는 체크리스트 샘플입니다. 하위 자료의 저작권은 Sally J. Rogers와 Geraldine Dawson에 있으며, 재배포 및 무단 전재를 금합니다.</span></p>
+    <p><span style="font-size: 12pt;"><img decoding="async" src="/CSS/image/check_pic/esdm.jpg" alt="" class="responsive-img"></span></p>
+    <hr>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

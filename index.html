@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+      <!-- Open Graph Meta Tags -->
+      <meta property="og:title" content="티움 ABA 사회성연구소" />
+      <meta property="og:description" content="ESDM 프로그램 신규아동 모집중" />
+      <meta property="og:image" content="https://tiumesdm.com/CSS/image/tium_logo3.png" />
+      <meta property="og:url" content="https://www.tiumesdm.com" />
+      <meta property="og:type" content="website" />
+
+    <meta property="og:title" content="티움 ABA 사회성연구소" />
+    <meta property="og:description" content="ESDM 프로그램 신규아동 모집중" />
+    <meta property="og:image" content="https://tiumesdm.com/CSS/image/tium_logo3.png" />
+    <meta property="og:url" content="http://www.tiumesdm.com" />
+    <meta property="og:type" content="website" />
+    
+      <!-- Twitter Meta Tags -->
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content="티움 ABA 사회성연구소" />
+      <meta name="twitter:description" content="ESDM 프로그램 신규아동 모집중" />
+      <meta name="twitter:image" content="https://tiumesdm.com/CSS/image/tium_logo3.png" />
+
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+    /* 팝업 */
+      .popup-container {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 400px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 8px;
+            z-index: 10000;
+            display: none; /* 기본적으로 숨김 */
+        }
+
+        .popup-header {
+            background: #377dee;
+            color: white;
+            padding: 10px;
+            border-radius: 8px 8px 0 0;
+            font-size: 16px;
+            text-align: center;
+        }
+
+        .popup-content {
+            padding: 20px;
+            font-size: 13px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .popup-footer {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px;
+            border-radius: 0 0 8px 8px;
+            background: #393939;
+        }
+
+        .popup-footer button {
+            padding: 8px 12px;
+            font-size: 14px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .popup-footer .reject-btn {
+            background: #282828;
+            color: #fff;
+        }
+
+        .popup-footer .close-btn {
+            background: #282828;
+            color: #fff;
+        }
+
+	.image-container {
+    background-image: url('/CSS/image/page_thumnail/front.jpg');
+	min-height: 460px;
+}
+
+.header_group {
+    width: 100%;
+    position: relative; /* sticky의 기준이 되는 부모 요소 */
+    z-index: 1000;
+    background-color: transparent /* 초기 투명 배경 */
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    background-color: transparent;
+}
+
+.logo-container img {
+    width: 350px;
+    height: 50px;
+    object-fit: contain;
+    transition: opacity 0.3s ease; /* 투명도 전환을 부드럽게 설정 */
+}
+
+.logo-container img:hover {
+    opacity: 0.7; /* 투명도를 살짝 낮춰서 흐리게 표현 */
+    cursor: pointer; /* 마우스 커서를 포인터로 변경 */
+}
+
+/* 네비게이션 메뉴 sticky 설정 */
+.navigation-container {
+    position: sticky;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0); /* 초기 투명 배경 */
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    color: #fff;
+    transition:color 0.3s ease;
+}
+
+.navigation-container a, .caret, .caret-right {
+    color: white;
+    border-color: white; /* 화살표 색상 */
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+/* 스크롤 시 상태 - 불투명 배경일 때 */
+.navigation-container.scrolled a, .navigation-container.scrolled .caret, .navigation-container.scrolled .caret-right {
+    color: black;
+    border-color: black; /* 화살표 색상 */
+}
+
+/* 로고 숨김 상태 */
+.logo-container.hidden {
+    display: none;
+}
+
+/* 스크롤 시 네비게이션 바의 흰색 배경과 고정 */
+.navigation-container.scrolled {
+    background-color: rgba(255, 255, 255, 1); /* 불투명 흰색 */
+    position: fixed;
+    top: 0;
+    color: black; /* 텍스트 색상 검정으로 변경 */
+    width: 100%;
+}
+
+.navigation-container.scrolled .caret,
+.navigation-container.scrolled .caret-right {
+    border-color: black; /* 스크롤 시 화살표를 검정색으로 변경 */
+}
+    
+    /* 드롭다운 메뉴 스타일 */
+    .drop_down_menu_group {
+        display: flex;
+        gap: 20px;
+    }
+
+    .drop_down_menu_group > div {
+    position: relative;
+    padding: 10px;
+    }
+
+    /* 투명 막 효과 */
+.drop_down_menu_group > div::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0%; /* 중앙에서 시작 */
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.2); /* 얇은 투명 막 */
+    transform: scaleX(0); /* 처음엔 막이 보이지 않음 */
+    transform-origin: center;
+    transition: transform 0.3s ease; /* 트랜지션 효과 */
+    pointer-events: none; /* 투명 막이 클릭을 방해하지 않도록 설정 */
+}
+
+/* 마우스를 올렸을 때 투명 막이 펼쳐짐 */
+.drop_down_menu_group > div:hover::before {
+    transform: scaleX(1); /* 중앙에서 양쪽으로 펼쳐짐 */
+}
+
+.dropdown-content, .sub-dropdown-content {
+    position: absolute;
+    background-color: #fff;
+    min-width: 150px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    color: black;
+    z-index: 10;
+    opacity: 0;
+    transform: translateY(-10px); /* 처음에 약간 위로 이동된 위치에서 시작 */
+    transition: opacity 0.3s ease, transform 0.3s ease; /* 등장 애니메이션 */
+    pointer-events: none; /* 호버되지 않을 때는 클릭되지 않도록 설정 */
+    left: 0;
+    top: 40px;
+    font-size: 14px;
+}
+
+    
+    .dropdown-content div {
+        padding: 10px;
+        text-align: left;
+        transition: color 0.3s ease;
+    }
+
+    
+.drop_down_menu_group > div:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0); /* 원래 위치로 내려오면서 보임 */
+    pointer-events: auto; /* 드롭다운이 보일 때는 클릭 가능하도록 설정 */
+}
+
+.dropdown-content a, .sub-dropdown-content a {
+    display: block;
+    padding: 10px;
+    text-align: left;
+    color: royalblue; /* 기본 텍스트 색상 */
+    text-decoration: none; /* 밑줄 제거 */
+    transition: color 0.3s ease, opacity 0.3s ease; /* 색상 및 투명도 전환 */
+}
+
+/* 링크에 마우스를 올렸을 때 스타일 */
+.dropdown-content a:hover, .sub-dropdown-content a:hover {
+    opacity: 0.7; /* 투명도 효과 */
+    color: royalblue; /* 호버 시 동일한 색상 유지 */
+}
+
+/* transition 속성을 제거하여 다른 요소로 스타일 전파 방지 */
+.dropdown-content a, .sub-dropdown-content a {
+    opacity: 1; /* 투명도 효과 */
+    color: black; /* 호버 시 동일한 색상 유지 */
+}
+    
+/* 서브 드롭다운 */
+.sub-dropdown-content {
+    left: 100%;
+    top: 40%;
+    opacity: 0;
+    transition: opacity 0.2s ease; /* 점멸하듯 사라지기 위한 빠른 트랜지션 */
+}
+
+.facility:hover .sub-dropdown-content {
+    opacity: 1;
+    pointer-events: auto; /* 서브 드롭다운 보일 때 클릭 가능하도록 */
+}
+    
+    /* CARET 아이콘 스타일 */
+    .caret {
+        border: solid #fff;
+        border-width: 0 2px 2px 0;
+        display: inline-block;
+        padding: 3px;
+        transform: rotate(45deg);
+        margin: 3px;
+        margin-left: 5px;
+    }
+    
+    .caret-right {
+    display: inline-block;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+    padding: 3px;
+    transform: rotate(45deg); /* 기본 오른쪽 방향 */
+    margin-left: 5px;
+    transition: transform 0.3s ease; /* 회전 애니메이션 */
+    margin-bottom: 1px;
+}
+
+.facility:hover .caret-right {
+    transform: rotate(-45deg); /* 기본 오른쪽 방향 */
+}
+
+    .dropdown-content .caret-right,
+    .sub-dropdown-content .caret-right {
+        border-color: black; /* 드롭다운 화살표를 검정색으로 설정 */
+    }
+    
+    
+    /* 콘텐츠 상단 여백 추가 */
+    body {
+        margin-top: 0px; /* 헤더의 총 높이 */
+    }
+
+    .hamburger-menu{
+      display: none;
+    }
+
+    @media (min-width: 768px) {
+      .mobile-nav  {
+        display: none!important;
+      }
+    }
+    
+    /* 반응형 */
+    @media (max-width: 768px) {
+        .logo-container img {
+          width: auto;
+          height: 38px;
+        }
+
+        .image-container {
+        background: no-repeat;
+        background-size: 100% 50%;
+        background-position: center;
+        background-image: url(/CSS/image/page_thumnail/front.jpg);
+        min-height: 240px;
+    }
+
+        .centered-text {
+          word-break: keep-all;
+          white-space: nowrap;
+          font-size: 24px;
+        }
+
+        .description {
+          padding-right: 0!important;
+        }
+    
+        .drop_down_menu_group {
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+    
+        .drop_down_menu_group > div {
+            width: 100%;
+            text-align: left;
+        }
+
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px 0;
+            background-color: transparent;
+            background-color: #fff;
+            padding-left: 10px;
+            position: fixed;
+            width: 100%;
+        }
+
+        .hamburger-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    position: relative;
+    margin-left: 10px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.bar1 {
+    transform-origin: top left;
+}
+
+.bar2 {
+    opacity: 1;
+}
+
+.bar3 {
+    transform-origin: bottom left;
+}
+
+.hamburger-menu.open .bar1 {
+    transform: rotate(45deg);
+}
+
+.hamburger-menu.open .bar2 {
+    opacity: 0;
+}
+
+.hamburger-menu.open .bar3 {
+    transform: rotate(-45deg);
+}
+
+.mobile-nav {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            padding: 15px;
+            background-color: #fff;
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 999;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out, opacity 0.3s ease;
+            transform: translateY(-100%);
+            opacity: 0;
+        }
+
+        .mobile-nav.open {
+            display: flex;
+            transform: translateY(0);
+            opacity: 1;
+            position: fixed;
+        }
+
+        #mobileNav > ul > li.has-submenu.open > ul > li.has-submenu > ul::after {
+          right: 0;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav li {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .mobile-nav .submenu {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding-left: 15px;
+        }
+
+        .mobile-nav .submenu.open {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .mobile-nav .has-submenu::after {
+            content: "\25BC";
+            float: right;
+            transition: transform 0.3s;
+            position: absolute;
+        right: 10px; /* Position the arrow to stay at the right */
+        top: 50%; /* Vertically center the arrow */
+        transform: translateY(-50%); /* Adjust for vertical centering */
+        }
+
+        .mobile-nav .has-submenu.open::after {
+            transform: rotate(180deg);
+            top: 5%;
+        }
+
+        
+
+        .mobile-nav .has-submenu {
+        position: relative;
+        padding-right: 20px; /* Add space to the right for the arrow */
+        
+    }
+
+
+.navigation-container {
+        display: none;
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+        background-color: #fff;
+        color: #333;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        transition: transform 0.3s ease-in-out;
+        transform: translateY(-100%);
+    }
+
+    .navigation-container.open {
+        display: flex;
+        transform: translateY(0);
+        opacity: 1;
+        overflow: hidden;
+        animation: fadeInDown 0.3s ease-in-out;
+        padding: 0;
+        
+    }
+
+    .drop_down_menu_group > div:hover .dropdown-content {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    width: 100%;
+    position: absolute;
+ 
+    }
+    
+
+    .logo-container.hidden {
+        display: none;
+    }
+
+    .hestia-description{ 
+  word-break: keep-all;
+}
+
+    .navigation-container a, .caret, .caret-right {
+    color: #333;
+    border-color: #333!important;
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    }
+
+    @keyframes fadeOutUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    to {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+}
+
+.navigation-container.closing {
+    animation: fadeOutUp 0.3s ease-in-out;
+}
+
+	.letter-section {
+    position: relative;
+    margin: 0px 30px;
+    padding: 0px 25.8% 25px;
+    background-color: #fff;
+    border-radius: 8px 8px 0px 0px;
+    z-index: 2;
+    margin-top: -100px;
+    box-shadow: 0 16px 24px 2px rgba(0, 0, 0, .14), 0 6px 30px 5px rgba(0, 0, 0, .12), 0 8px 10px -5px rgba(0, 0, 0, .2);
+}
+
+.letter-section {
+    background-image: url('/CSS/image/bottom.jpg');
+    background-position: center center;
+    background-size: cover;
+    font-size: 14px;
+    padding: 0px 13.5% 25px;
+    position: relative; /* :after에 필요한 위치 기준 */
+    overflow: hidden; /* 내부 요소가 부모 경계를 넘지 않도록 설정 */
+    color: #fff; /* 글자 색상 설정 */
+    z-index: 2; /* 글자를 위에 표시 */
+}
+
+.letter-section:after {
+    display: block;
+    position: absolute;
+    z-index: 1; /* 글자보다 뒤에 위치 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7); /* 반투명 배경 */
+    content: "";
+    border-radius: 8px; /* 부모의 border-radius와 동일하게 설정 */
+}
+
+.letter-section-content {
+    position: relative;
+    z-index: 2; /* 글자 콘텐츠를 배경보다 위로 표시 */
+}
+
+.hestia-description{ 
+	padding: 30px 0;
+}
+
+  /* footer */
+
+  footer {
+  width: 100%;
+  color: #fff;
+  font-size: 15px;
+}
+footer a {
+  color: #fff;
+  font-weight: 300;
+}
+
+footer .footer_menu {
+  display: flex;
+  justify-content: space-between;
+  padding: 80px 0;
+}
+footer .footer_menu .title {
+  font-family: 'Pretendard-Bold' !important;
+  letter-spacing: 1px;
+}
+footer .footer_menu .title ul {
+  margin-top: 10px;
+}
+footer .footer_menu .title ul li {
+  height: 30px;
+  line-height: 30px;
+}
+footer .footer_info {
+  position: relative;
+  padding-bottom: 20px;
+  padding-left: 9%;
+  background: #323437;
+  color: #fff;
+}
+footer .adress {
+  font-weight: 300;
+    margin-top: 6px;
+    font-size: 14px;
+    line-height: 0.4;
+}
+footer .adress p {
+  margin: 0;
+  height: 30px;
+  line-height: 30px;
+}
+footer .adress p:last-child span{
+  margin-right: 10px;
+}
+footer .adress .bold {
+  font-weight: bold;
+  margin-right: 20px;
+}
+footer .footer_bottom {
+  padding: 60px;
+  font-weight: 300;
+  position: relative;
+  color: #fff;
+  background: #323437;
+}
+
+@media screen and (max-width: 1170px) {
+  .menu-list ul li  {
+    font-size: 16px;
+  }
+  #main_banner .page_name {
+    font-size: 48px;
+  }
+  #main_banner .sub_page_navigation a {
+    font-size: 14px;
+  }
+  .navbar {
+    padding: 0 20px;
+  }
+  .navbar-toggle {
+    right: 20px;
+  }
+  #main_banner .sub_page_navigation {
+    gap: 20px;
+  }
+  .inner {
+    width: 100%;
+    padding: 0 15px;
+  }
+  section.main .section .section_top {
+    margin: 100px 0;
+  }
+  section.main .section {
+    width: 100%;
+    padding: 0 20px;
+  }
+  section.main .section .section_tag {
+    font-size: 18px;
+  }
+  section.main .section .section_title {
+    font-size: 20px;
+  }
+  section.main .section .section_top .section_desc {
+    font-size: 16px;
+  }
+  footer .footer_menu {
+    flex-wrap: wrap;
+    row-gap: 20px;
+  }
+  footer .footer_menu .title {
+    width: 50%;
+    font-size: 18px;
+  }
+  footer .footer_menu .title ul {
+    font-size: 14px;
+  }
+  footer .footer_info .sns_group {
+    bottom: 70px;
+  }
+  footer .family_site {
+    bottom: 100px;
+  }
+  footer .footer_bottom {
+    padding: 30px 0;
+  }
+  footer .adress {
+    font-size: 14px;
+  }
+
+}
+
+.blog_address {
+    margin-left: 10px;
+    color: #e91e63;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+}
+
+.blog_address:hover{
+    opacity: 0.8;
+}
+
+.email_address {
+    color: #e91e63;
+    transition: opacity 0.3s ease;
+    font-weight: bold;
+    margin-left: 8px;
+}
+
+.email_address:hover {
+    opacity: 0.8;
+}
+
+a {
+    color: #333;
+
+}
+
+ .mok-map {
+        display: block;
+        margin: 10px auto;
+        height: auto;
+        max-width: 55%; /* 기본값: PC 화면에서 최대 80% */
+    }
+
+    /* 화면이 768px 이하(태블릿/모바일)일 때 적용 */
+    @media screen and (max-width: 768px) {
+        .mok-map {
+            max-width: 40%; /* 모바일에서는 더 작게 */
+        }
+    }
+
+</style>
+<body>
+    <!-- 팝업 -->
+    <div class="popup-container" id="popup">
+        <div class="popup-header">알림</div>
+        <div class="popup-content">
+            <p><strong>&lt;티움ABA 목동연구소 확장이전&gt;</strong></p>
+
+            <p>보다 나은 교육 환경을 위해 티움ABA 목동연구소가 아래 주소로 이전하였습니다.</p>
+            <p><img src="/CSS/image/mokmap.png" alt="목동연구소 위치 안내 지도" class="mok-map"></p>
+            <p><strong>&lt;ABA사회성 짝수업 신규 아동 모집&gt;</strong></p>
+            
+            <p>티움 노원연구소에서 <strong>4-5학년</strong> 사회성수업 짝친구를 모집합니다.</p>
+            
+            <p><strong>신청방법:</strong> 010-2191-4920 (연구소장 정보경 BCBA)으로 초기상담 문자 신청 (아동 성별, 연령, 주호소 기재) 
+    
+            <p>📩 <strong>이메일:</strong> <a href="mailto:tiumaba@naver.com">tiumaba@naver.com</a></p>
+        
+            <p>📱 <strong>문의:</strong> 문자 또는 카톡으로 남겨주시면 수업 마치는 대로 회신 드리겠습니다.</p>
+    
+            <p>감사합니다.</p>
+        </div>
+        <div class="popup-footer">
+            <button class="reject-btn" id="reject">24시간 동안 다시 열람하지 않기</button>
+            <button class="close-btn" id="close">닫기</button>
+        </div>
+    </div>
+    <!-- Header를 불러오기 -->
+	<div style="position: absolute; top:0; left: 0;width: 100%; height: 100%;">
+		<div class="header_group">
+			<div class="logo-container">
+				<a class="navbar-brand" href="https://www.tiumaba.com/" title="티움 ABA">
+					<img src="CSS/image/tium_logo.png" alt="티움 ABA">
+				</a>
+        <div class="hamburger-menu" id="hamburger">
+          <div class="bar bar1"></div>
+          <div class="bar bar2"></div>
+          <div class="bar bar3"></div>
+        </div>
+          <!-- 모바일버전 네비바 -->
+      <div class="mobile-nav" id="mobileNav">
+        <ul>
+            <li class="has-submenu">소개
+                <ul class="submenu">
+                    <li><a href="/introduce.html">함께하는 사람들</a></li>
+                    <li class="has-submenu">시설 둘러보기
+                        <ul class="submenu">
+                            <li><a href="/incheon.html">티움ABA 사회성연구소(인천)</a></li>
+                            <li><a href="/nowon.html">티움ABA 사회성연구소(노원)</a></li>
+                            <li><a href="/mokdong.html">티움ABA ESDM 연구소(목동)</a></li>
+                            <li><a href="/yeongjong.html">영종 연구소(인천 영종)</a></li>
+                            <li><a href="/yeoju.html">티움 농장(경기 여주)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/direction.html">연구소 오시는 길</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">자페스펙트럼과 ABA
+                <ul class="submenu">
+                    <li><a href="/asd.html">자페스펙트럼</a></li>
+                    <li><a href="/aba.html">ABA</a></li>
+                    <li><a href="/esdm.html">ESDM</a></li>
+                </ul>
+            </li>
+            <li><a href="/feature.html" style="color: #333;">특징</a></li>
+            <li class="has-submenu">프로그램
+                <ul class="submenu">
+                    <li><a href="/aba_esdm.html">ABA/ESDM</a></li>
+                    <li><a href="/aba_group.html">ABA 사회성그룹</a></li>
+                    <li><a href="/j_program.html">특수영재 프로그램</a></li>
+                    <li><a href="/lang_cure.html">언어치료</a></li>
+                    <li><a href="/nature.html">생태교육</a></li>
+                    <li><a href="/parent.html">부모교육</a></li>
+                    <li><a href="/cure_device.html">치료용 교구 제작</a></li>
+                    <li><a href="/boardbook.html">상황인지 사회성보드북</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">검사
+                <ul class="submenu">
+                    <li><a href="/esdm_check.html">ESDM Check List(부모보고)</a></li>
+                    <li><a href="/brain_check.html">전두엽 기능검사</a></li>
+                    <li><a href="/intel_check.html">지능 및 언어검사</a></li>
+                    <li><a href="/etc.html">그 밖의 평가 도구</a></li>
+                </ul>
+            </li>
+            <li class="has-submenu">게시판
+                <ul class="submenu">
+                    <li><a href="/notice.html">공지사항</a></li>
+                    <li><a href="/form.html">상담신청</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+			</div>
+			<div class="navigation-container" id="navContainer">
+				<div class="drop_down_menu_group">
+					<div class="introduce">소개<span class="caret"></span>
+						<div class="dropdown-content">
+							<div><a href="/introduce.html">함께하는 사람들</a></div>
+							<div class="facility" style="margin-left: 10px;">시설 둘러보기<span class="caret-right"></span>
+								<div class="sub-dropdown-content" style="white-space: nowrap">
+									<div><a href="/incheon.html">티움ABA 사회성연구소(인천)</a></div>
+									<div><a href="/nowon.html">티움ABA 사회성연구소(노원)</a></div>
+                                    <div><a href="/mokdong.html">티움ABA ESDM 연구소(목동)</a></div>
+									<div><a href="/yeongjong.html">영종 연구소(인천 영종)</a></div>
+									<div><a href="/yeoju.html">티움 농장(경기 여주)</a></div>
+								</div>
+							</div>
+							<div><a href="/direction.html">연구소 오시는 길</a></div>
+						</div>
+					</div>
+					<div class="ASD_aba">자페스펙트럼과 ABA<span class="caret"></span>
+						<div class="dropdown-content">
+							<div><a href="/asd.html">자페스펙트럼</a></div>
+							<div><a href="/aba.html">ABA</a></div>
+							<div><a href="/esdm.html">ESDM</a></div>
+						</div>
+					</div>
+					<div class="feature"><a href="/feature.html">특징</a></div>
+					<div class="program">프로그램<span class="caret"></span>
+						<div class="dropdown-content"  style="white-space: nowrap">
+							<div><a href="/aba_esdm.html">ABA/ESDM</a></div>
+							<div><a href="/aba_group.html">ABA 사회성그룹</a></div>
+							<div><a href="/j_program.html">특수영재 프로그램</a></div>
+							<div><a href="/lang_cure.html">언어치료</a></div>
+							<div><a href="/nature.html">생태교육</a></div>
+							<div><a href="/parent.html">부모교육</a></div>
+							<div><a href="/cure_device.html">치료용 교구 제작</a></div>
+							<div><a href="/boardbook.html">상황인지 사회성보드북</a></div>
+						</div>
+					</div>
+					<div class="test">검사<span class="caret"></span>
+						<div class="dropdown-content"  style="white-space: nowrap">
+							<div><a href="/esdm_check.html">ESDM Check List(부모보고)</a></div>
+							<div><a href="/brain_check.html">전두엽 기능검사</a></div>
+							<div><a href="/intel_check.html">지능 및 언어검사</a></div>
+							<div><a href="/etc.html">그 밖의 평가 도구</a></div>
+						</div>
+					</div>
+					<div class="board">게시판<span class="caret"></span>
+						<div class="dropdown-content">
+							<div><a href="/notice.html">공지사항</a></div>
+							<div><a href="/form.html">상담신청</a></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">함께 걸어가는 길, 티움</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+				<div class="letter-section-content">
+					<div class="hestia-description">
+						<h5 class="description" style="font-size: 18px;color: #8d8d8d;padding-right: 50%;font-weight: 300;word-break: keep-all;">
+							26년 상반기 신규아동 상담 및 문의는 게시판에 안내된 양식을 첨부하여 이메일로 부탁드립니다. 감사합니다.
+						</h5>
+						<p><span style="color: #ffffff"><strong>인천 송도 연구소</strong></span></p>
+						<p><span style="color: #ffffff">인천 연수구 컨벤시아대로 81 321호</span></p>
+						<p><span style="color: #ffffff"><strong>서울 노원 연구소</strong></span></p>
+						<p><span style="color: #ffffff">노원구 중계로 160 화인상가 215호</span></p>
+                        <p><span style="color: #ffffff"><strong>목동 ESDM 연구소</strong></span></p>
+						<p><span style="color: #ffffff">서울 양천구 목동동로 202 상가 2층 206호</span></p>
+						<p><span style="color: #ffffff"><strong>영종 생태교실</strong></span></p>
+						<p><span style="color: #ffffff">인천 중구 눈돌로 13번길 8</span></p>
+						<p><a href="https://blog.naver.com/tium_ins"><span style="color: #ff6600"><strong>[협력기관]</strong></span></a></p>
+						<p><span style="color: #ffffff"><a href="https://blog.naver.com/tium_ins" style="color: #ffffff"><strong>티움의사소통연구소</strong></a></span></p>
+						<p><span style="color: #ffffff"><a href="https://blog.naver.com/tium_ins" style="color: #ffffff">대전 유성구 온천로 60</a></span></p>
+						<p><span style="color: #ffffff"><strong>문의 이메일</strong></span></p>
+						<p><span style="color: #ffffff">초기 상담 담당자</span>&nbsp;<a href="mailto:tiumaba@naver.com"><strong><span style="color: #e91e63;">tiumaba@naver.com</span></strong></a></p>
+						<p><span style="color: #99cc00"><strong><span style="color: #ffffff">네이버블로그</span> <a href="http://blog.naver.com/tiumaba" style="color: #e91e63;     white-space: nowrap;">https://blog.naver.com/tiumaba</a></strong></span>
+
+						</p>
+					</br>
+						<p><span style="color: #fff"><strong><span style="color: #ffffff;font-size: 19px;">Copyright tiumABA All Rights Reserved.</span></strong></span>
+
+						</p>
+						
+					</div>
+				</div>
+			</div>
+    </main>
+
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // 팝업 요소
+        const popup = document.getElementById('popup');
+        const rejectButton = document.getElementById('reject');
+        const closeButton = document.getElementById('close');
+
+        // 24시간 동안 팝업 비활성화 함수
+        function setPopupTimeout() {
+            const expiration = new Date();
+            expiration.setTime(expiration.getTime() + 24 * 60 * 60 * 1000); // 24시간
+            document.cookie = `popupClosed=true; expires=${expiration.toUTCString()}; path=/`;
+            popup.style.display = 'none';
+        }
+
+        // 쿠키 확인 함수
+        function getCookie(name) {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                if (cookie.startsWith(name + '=')) {
+                    return cookie.substring(name.length + 1);
+                }
+            }
+            return null;
+        }
+
+        // 팝업 초기화 함수
+        function initPopup() {
+            if (!getCookie('popupClosed')) {
+                popup.style.display = 'block';
+            }
+        }
+
+        // 이벤트 리스너 추가
+        rejectButton.addEventListener('click', setPopupTimeout);
+        closeButton.addEventListener('click', () => {
+            popup.style.display = 'none';
+        });
+
+        // 팝업 초기화 실행
+        initPopup();
+    </script>
+    <script>
+
+const hamburger = document.getElementById('hamburger');
+const navContainer = document.getElementById('navContainer');
+let lastScrollY = 0;
+
+    window.addEventListener('scroll', function () {
+        if (window.innerWidth > 768) {
+            const logoContainer = document.querySelector('.logo-container');
+            const navigationContainer = document.querySelector('.navigation-container');
+            const carets = document.querySelectorAll('.caret, .caret-right');
+
+            if (window.scrollY > 50 && window.scrollY > lastScrollY) {
+                // 스크롤을 아래로 내릴 때
+                logoContainer.classList.add('hidden');
+                navigationContainer.classList.add('scrolled');
+            } else if (window.scrollY <= 50) {
+                // 최상단에 도달할 때
+                logoContainer.classList.remove('hidden');
+                navigationContainer.classList.remove('scrolled');
+            }
+
+            lastScrollY = window.scrollY;
+        }
+    });
+
+    const mobileNav = document.getElementById('mobileNav');
+    const submenuHeaders = document.querySelectorAll('.mobile-nav .has-submenu');
+
+    hamburger.addEventListener('click', function() {
+        if (mobileNav.classList.contains('open')) {
+            mobileNav.classList.add('closing');
+            mobileNav.style.animation = 'fadeOutUp 0.3s ease-in-out';
+            setTimeout(() => {
+                mobileNav.classList.remove('open', 'closing');
+                mobileNav.style.animation = '';
+            }, 300);
+        } else {
+            mobileNav.classList.add('open');
+            mobileNav.style.animation = 'fadeInDown 0.3s ease-in-out';
+        }
+        this.classList.toggle('open');
+    });
+
+    submenuHeaders.forEach(header => {
+        header.addEventListener('click', (event) => {
+            event.stopPropagation(); // 이벤트 전파 방지
+            const submenu = header.querySelector('.submenu');
+            submenu.classList.toggle('open');
+            header.classList.toggle('open');
+        });
+    });
+			
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

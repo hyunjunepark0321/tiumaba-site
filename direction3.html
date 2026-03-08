@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.png');
+}
+    /* iframe을 반응형으로 만드는 스타일 */
+    .responsive-iframe {
+        position: relative;
+        width: 100%; /* 부모 요소의 너비를 따라감 */
+        height: 0; /* 높이를 0으로 설정하고 아래 패딩 비율로 높이를 정의 */
+        padding-bottom: 75%; /* 4:3 비율 유지 (450 / 600 * 100%) */
+    }
+
+    .responsive-iframe iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%; /* 부모 요소의 너비에 맞춤 */
+        height: 100%; /* 부모 요소의 높이에 맞춤 */
+        border: 0; /* 테두리 제거 */
+    }
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">연구소 오시는길</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+        
+                    <hr>
+    <p><strong>[목동 ESDM연구소]서울특별시 양천구 목동동로 202 상가 2층 206호</strong></p>
+    <hr>
+    <p><div class="responsive-iframe">
+        <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.3404566922204!2d126.86916187632175!3d37.523471026595686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e80e92514fd%3A0x6488e43fe6b3f0e4!2z7ISc7Jq47Yq567OE7IucIOyWkeyynOq1rCDrqqnrj5nrj5nroZwgMjAy!5e0!3m2!1sko!2skr!4v1767513917794!5m2!1sko!2skr"
+            allowfullscreen="allowfullscreen"
+            loading="lazy"
+        ></iframe>
+    </div>
+    <br/>
+        <strong>
+    대중교통 이용시</strong></p>
+    <p>지하철</p>
+    <p>
+    5호선 <strong>오목교역(목동운동장앞)</strong> 하차 →  
+    8번 출구로 나와 직진 →  
+    목동동로 왼쪽 방면으로 도보 이동 →  
+    동문비젼오피스텔 상가 2층 (도보 약 7~10분 소요)
+    </p>
+    <p><strong>자가용 이용시</strong></p>
+    <p>경인고속도로 진입하여 오른쪽 차선으로 주행 → <br/> 양천 소방서가 오른쪽 정면으로 보이는 기준 우회전 진입 → <br/> 목동동로 방향 직진 → <br/> 동문비젼오피스텔 인근 주차</p>
+    <hr>
+    <div class="text-center"><ul class="nav pagination pagination-primary">
+    <li style="margin-bottom: 10px;"><a href="/direction.html">1. 티움ABA 사회성연구소(인천) 오시는길</a></li><br>
+    <li style="margin-bottom: 10px;"><a href="/direction2.html">2. 티움ABA 사회성연구소(노원) 오시는길</a></li><br>
+    <li><span class="page-numbers current">3. 티움ABA ESDM연구소(목동) 오시는길</span></li></ul></div>			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

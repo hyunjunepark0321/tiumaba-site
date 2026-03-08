@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/esdm.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">ESDM</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+
+				<hr>
+<p>ESDM은 얼리 스타트 덴버 모델(Early Start Denver Model)의 약자로, 12개월~48개월 연령 자폐아들을 위한 종합적 초기 행동 중재법입니다. 이 프로그램은 발달 과정에서 배워야할 기술들과 그 기술들을 수행하는 데 필요한 교수법들을 포함합니다. ESDM은 특정 환경을 고집하지 않으며, 치료소의 치료사나 가정의 부모로부터 수행될 수 있습니다. 치료법의 목적은 자폐아동의 사회적 발전을 증진하고 자폐로 인한 이상행동을 감소시키는 것입니다. ESDM은 언어적, 비언어적 의사소통, 따라 하기, 주의집중, 번갈아가며 차례 지키기 등을 통해 사회적 학습을 증진시킵니다.</p>
+<blockquote><p>ESDM에서 가장 중요한 것은 아이와 치료자 간의 친밀하고 긍정적인 관계의 형성입니다. 관계를 바탕으로 한 놀이와 협력을 통해 아이는 언어적, 사회적, 인지적 능력을 성취할 수 있습니다.</p></blockquote>
+<p>ESDM은 다음과 같은 요소들에 집중합니다.</p>
+<ul style="list-style-type: square;">
+<li>초기 아동발달과 학습에 대한 깊은 이해</li>
+<li>긍정적 관계의 형성</li>
+<li>자연스러운 놀이와 일상생활에서의 배움</li>
+<li>의사소통과 상호작용을 촉진시키는 놀이</li>
+</ul>
+<p>NIH에서 지원한 임상실험 결과에 따르면, ESDM은 최소 1년 이상 치료받았을 때 IQ 증대, 언어 능력, 사회적 능력 증대, 응용행동 향상 등의 효과가 있는 것으로 나타났습니다.</p>
+<hr>
+
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

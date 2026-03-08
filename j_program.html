@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">특수영재 프로그램</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+        
+                    <hr>
+    <p>ASD나 발달장애를 가진 아이들 중에도 영재성을 발휘하는 아이가 있습니다. 장애와 영재성은 대립하는 개념이 아니며, 서로 교차하는 영역이 있습니다. 학습장애, 자폐성 장애, 주의력 결핍 및 과잉행동 장애, 불안 및 품행장애 등과 같은 특수교육 대상의 특성과 높은 지능, 창의성, 과제집착력 등 영재교육 대상의 특성을 동시에 지니는 이중 특수성을 지닌 아이들을 ‘특수영재’ 라고 부릅니다. 티움의 특수영재 프로그램은 이런 특수성을 지닌 아이들이 자신의 잠재력을 끌어낼 수 있도록 하는데 목적을 두고 있습니다.</p>
+    <p>그렇다면 영재는 어떤 성향을 보일까요?</p>
+    <blockquote><p><em>사물과</em> <em>현상을</em> <em>남과</em> <em>다르게</em> <em>받아들입니다</em><em>. (</em><em>독창성</em><em>/</em><em>창의성</em><em>)</em></p>
+    <p><em>다양한 방법으로</em> <em>표현하고</em> <em>설명합니다</em><em>. (</em><em>다면성</em><em>)</em></p>
+    <p><em>짧게</em> <em>설명하지</em> <em>않고</em><em>, </em><em>조리있게</em> <em>표현합니다</em><em>. (</em><em>유창성</em><em>)</em></p>
+    <p><em>다른</em> <em>조건에서도</em> <em>문제를</em> <em>해결할</em> <em>수</em> <em>있는 능력을 가지고 있습니다.</em><em> (</em><em>융통성</em><em>/</em><em>문제해결</em><em>)</em></p>
+    <p><em>혼자 문제를 해결하는 것이 아니라</em> <em>타인과 함께</em> <em>협력합니다</em><em>. (</em><em>의사소통</em><em>)</em></p></blockquote>
+    <p>수학, 과학 (물리, 지구과학, 생물, 화학), 정보과학 또는 예술이나 인문사회과학 분야에서 영재의 성향이 두드러지게 나타납니다.</p>
+    <p>티움특수영재교육은 로운교육의 사고력 수학교육인 ‘크다고’에서 진화하여 만들어졌습니다.</p>
+    <p>크다고는 단순히 해결하기 힘든 문제를 풀어내는 것이 아니라 창의력을 향상시키고 문제의 본질을 정확히 파악하는데 초점을 둡니다. 학생은 문제를 해결하면서 의사소통과 협력의 방법을 배우고 문제해결능력을 향상시킵니다.</p>
+    <blockquote><p><em>티움 특수영재교육은 크다고가 다루는 문제를 수학뿐 아니라, 과학적, 정보과학적 사고까지 확장합니다.</em></p></blockquote>
+    <p>티움특수영재의 교육철학은 시작은 작으나 (FEW: Fun, Easy, With) 끝은 창대 (GIFTED: Greatly, Increased, Fluent/Flexible, Teamwork, Excellent, Decision making) 하다는 구절에 기반합니다.</p>
+    <p>FUN 재미있고, EASY 쉽고, WITH 함께하는</p>
+    <blockquote><p><em>Greatly 크게</em></p>
+    <p><em>Increased 향상된</em></p>
+    <p><em>Fluent/Flexible 유창하고/융통성있는</em></p>
+    <p><em>Teamwork 함께하며</em></p>
+    <p><em>Excellent 뛰어난</em></p>
+    <p><em>Decision making 의사결정능력</em></p></blockquote>
+    <p><strong>GIFTED</strong></p>
+    <hr>
+             
+			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

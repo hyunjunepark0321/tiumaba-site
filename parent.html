@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">부모교육</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+       
+                    <hr>
+    <p>아동의 생활환경에서 영향력이 큰 인물이 치료자로서 중재 역할을 수행합니다. 가정에서는 부모님이 가정 적절하고 강력한 치료자가 됩니다. 따라서 부모님과 교사는 응용행동분석(ABA)의 원리와 기법의 활용에 있어서 상당한 이해를 가져야 합니다. 부모님이 가정 내 치료자로서 역할을 성공적으로 수행하시려면 훈련과 행동분석전문가의 도움이 필요합니다.</p>
+    <p>티움ABA 사회성연구소에서는 부모님과의 상담뿐 아니라 부모교육 또한 진행합니다.</p>
+    <blockquote><p>부모교육은 크게 EDSM훈련과 행동중재, 비폭력 대화에 대한 이해로 이루어져 있습니다.</p></blockquote>
+    <p>EDSM은 자연스러운 환경에서 눈맞춤, 사회성, 놀이기술, 표현언어 등의 향상을 목표로 하는 훈련 모델로 주로 사회성 증진과 언어 발달을 촉진하는 것으로 알려져 있습니다.</p>
+    <p>행동중재에 대한 교육은 연구소에서 진행하는 ABA프로그램을 집에서도 실행할 수 있도록, 기본적인 이해와 기술의 학습으로 이루어집니다.</p>
+    <p>비폭력대화란, 갈등이 발생했을 때 언어적, 물리적 폭력을 사용하지 않고 문제를 해결하는 대화법입니다. 자신의 사실과 느낌을 상대방에게 말하고 부탁하는 대화법입니다. 비폭력대화는 우리가 우리 자신을 표현하고, 다른 사람의 말을 듣는 방법을 재구성하도록 이끌어줍니다. 비폭력대화를 익히면 아이와의 관계에서 습관적이고 즉각적인 반응을 보이는 대신 자신이 무엇을 관찰하고 느끼고 원하는가를 의식하면서 이를 바탕으로 정직하고 명확하게 자신을 표현할 수 있게 됩니다. 뿐만 아니라 다른 사람의 이야기 역시 경청하면서 정중하고도 솔직한 관심을 보이게 됩니다 비폭력 대화는 크게 <br/> A)관찰 <br/>B)느낌 <br/> C)필요/욕구 <br/> D)요청/부탁 <br/>으로 이루어집니다.</p>
+    <p>부모교육은 약 120분~150분이 소요됩니다. 부모교육 진행 중에 아이들은 연구소 내에서 보조치료사와 함께 자유로운 시간을 보낼 수 있습니다.</p>
+    <hr>
+        
+			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

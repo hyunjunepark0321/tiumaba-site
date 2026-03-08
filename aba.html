@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/aba.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">ABA</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+					<p></p>
+	<hr>
+	<p>ABA란 응용행동분석(Applied Behavior Analysis)의 약자로, 행동의 원리로부터 도출된 절차를 체계적으로 활용하여 사회적으로 중요한 행동을 유의한 정도로 개선하고, 또 사용된 절차가 행동의 개선에 효과가 있음을 입증하는 과학입니다. <em>Cooper, Heron</em><em>과</em> <em>Heward(1987)</em></p>
+	<p><em>&nbsp;</em></p>
+	<p></p>
+	<p><em>행동수정이라고도 불리는 응용행동분석은 행동수정은 A-B-C 모델에 근거를 두고 있습니다. 선행조건, 행동, 그리고 결과가 그것입니다. </em></p>
+	<p><em>선행조건(A; Antecedent) – 행동 직전에 일어난 사건. </em></p>
+	<p><em>행동(B; Behavior) – 실제적인 행동. </em></p>
+	<p><em>결과(C; Consequence) – 행동의 결과.</em></p>
+	<p><em>&nbsp;</em></p>
+	<p></p>
+	<p>ABA는 ASD에 대한 가장 효과적인 개입 프로그램으로 알려져 있으며, 1960년대부터 사용되고 있습니다. ABA는 발달장애 아동뿐 아니라 성인에게도 효과가 있는 것으로 알려져 있습니다.</p>
+	<p></p>
+	<p><em>응용행동분석에 있어 가장 중요한 요소는</em></p>
+	<p><em>첫째, 부모와 교사에 의한 일관적이고 개별화된 치료, </em></p>
+	<p><em>둘째, 가장 적절한 치료법을 선택해주기 위한 가족들과 전문가들의 통합적 역할입니다.</em></p>
+	<p></p>
+	<p>ABA는 아이들이 자연스럽게 외부에 관심을 갖고 세상과 의사소통 할 수 있는 방법을 고민합니다. 아이들이 스스로 배우는 법을 터득해감에 따라 자신을 둘러싼 틀에서 벗어나 자유롭게 주변 환경으로부터 다양한 것을 스스로 배울 수 있도록 하고, 궁극적으로는 학교나 가정과 같은 일반 환경에서도 자연스럽게 배움을 이어 나가도록 합니다. <em>결과적으로 성인이 되어서는 사회의 일원으로 생활해 나갈 수 있게 하는 것이 ABA의 최종적인 목표입니다.</em></p>
+	<p></p>
+	<hr>
+	<p><strong>&nbsp;</strong></p>
+	<p><strong>더 많은 정보를 얻고자 하는 분들은</strong></p>
+	<blockquote>
+	<p><a href="https://abas.co.kr/intro/aba">https://abas.co.kr/intro/aba</a></p>
+	<p><a href="https://www.autismspeaks.org/">https://www.autismspeaks.org/</a> 등의 웹 페이지나,</p>
+	<p>응용행동분석, Cooper, John O, 시그마프레스(2010-2015)</p>
+	<p>응용행동분석, 홍준표, 학지사(2009)</p>
+	<p>당당 엄마 특수교육: 미국 특수교사가 전하는 엄마를 위한 응용행동분석, 최진혁, 시그마프레스(2013)</p>
+	</blockquote>
+	<p>등을 참고해 주세요.</p>
+	<p></p>
+	<hr>
+	<p></p>
+	
+	
+	<p></p>
+	<p>
+	
+	
+	</p><p></p>			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+		fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

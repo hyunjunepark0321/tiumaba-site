@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">전두엽 기능검사</div>
+		</div>
+        <div class="letter-background">
+            <div class="letter-section">
+    
+                    <hr>
+    <p>티움ABA 사회성연구소는 아동용 Kims 전두엽-관리기능 신경심리검사를 통해 아동의 전두엽 기능을 검사합니다.</p>
+    <p>“아동용 Kims 전두엽-&nbsp;관리기능 신경심리검사”는 성인용 관리기능(executive function, ‘실행기능’으로도 번역됨)검사인 &lt;Kims 전두엽-관리기능 신경심리검사&gt;를 아동에 적합한 형태로 개정한 검사입니다. 인지과정적 측면에서 관리기능은 주의, 언어, 시공간, 기억기능과 같은 하위(기초) 인지기능을 통제하는 상위 인지기능에 해당합니다. 하위 인지기능에 전혀 이상이 없는 아동일지라도 관리기능에 이상이 있는 경우 일상생활에서 많은 부적응 행동을 보입니다. 이런 점에서 관리기능은 임상가가 가장 중시해야 할 인지기능의 하나이지만, 기존의 검사도구로는 잘 측정되지 않는 특징이 있습니다. 예를 들어 임상에서 많이 쓰이는 Wechsler지능검사는 하위 인지기능의 이상에는 민감한 반면 관리기능의 이상에는 민감성이 거의 없습니다. 이를 반영하여 일상생활에서 부적응행동이 극심한 아동들이 &lt;K-WISC&gt;에서 정상 IQ를 보이는 경우가 적지 않습니다. 본 검사는 아동의 관리기능에 특화된 검사로서 이러한 아동들의 인지적 문제를 확연히 보여줍니다. 본 검사의 전체요약점수인 EIQ(executive IQ, 관리지능지수)는 아동의 관리기능의 전반적 평가에 유용하며 IQ와 비교해 상대적 평가도 가능합니다.</p>
+    <p>[출처: 도서출판신경심리 <a href="https://neuropsy.co.kr/renew/product/product_05.html">https://neuropsy.co.kr/renew/product/product_05.html</a>]</p>
+    <hr>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

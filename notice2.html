@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css">
+<link href="/CSS/board_style.css" rel="stylesheet" type="text/css">
+<style>
+    .letter-section {
+        padding: 70px 20vw 40px;
+    }
+    .image-container {
+        background-image: url('./CSS/image/page_thumnail/default.jpg');
+    }
+
+    .kboard-list-date {
+        white-space: nowrap;
+    }
+
+    @media (max-width: 768px) {
+    .letter-section {
+        padding: 70px 5% 1px;
+    }
+}
+</style>
+<body>
+
+<!-- Header를 불러오기 -->
+<div id="header-placeholder"></div>
+
+<main>
+    <div class="image-container">
+        <div class="overlay"></div>
+        <div class="centered-text">공지사항</div>
+    </div>
+    <div class="letter-background">
+        <div class="letter-section">
+            <div id="kboard-default-list">
+                <!-- 리스트 -->
+                <div class="kboard-list">
+                    <table>
+                        <thead>
+                            <tr>
+                                <td class="kboard-list-uid">번호</td>
+                                <td class="kboard-list-title">제목</td>
+                                <td class="kboard-list-user">작성자</td>
+                                <td class="kboard-list-date">작성일</td>
+                                <td class="kboard-list-vote">추천</td>
+                                <td class="kboard-list-view">조회</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- JavaScript로 데이터 삽입 -->
+                        </tbody>
+                    </table>
+                </div>
+                <!-- 페이징 -->
+                <div class="kboard-pagination">
+                    <ul class="kboard-pagination-pages">
+                        <li class="active"><a href="?pageid=1&amp;mod=list" onclick="return false">1</a></li>
+                    </ul>
+                </div>
+                <!-- 버튼 -->
+                <div class="kboard-control">
+                    <a href="/write.html" class="kboard-default-button-small">글쓰기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer를 불러오기 -->
+<div id="footer-placeholder"></div>
+<button id="scrollToTopBtn" class="scroll-to-top">
+    <img src="/CSS/image/icon/top_btn.png" alt="Top" />
+</button>
+<script>
+    // header.html 파일을 불러와 삽입
+    fetch('header.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+        })
+        .then(() => {
+            const script = document.createElement('script');
+            script.src = '/JS/header.js';
+            document.body.appendChild(script);
+        });
+
+    // footer.html 파일을 불러와 삽입
+    fetch('footer.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('footer-placeholder').innerHTML = data;
+        });
+</script>
+
+<script>
+    // API URL 동적으로 설정 (로컬/프로덕션 환경 구분)
+    const isLocal = location.hostname === '127.0.0.1' || location.hostname === '' || location.hostname === 'localhost';
+    const apiBaseUrl = isLocal
+        ? 'http://127.0.0.1:3000/api/posts' // 로컬 환경
+        : 'https://tiumesdm.com/api/posts'; // 프로덕션 환경
+
+    // validate-password URL 설정
+    const validatePasswordUrl = `${apiBaseUrl}/validate-password`;
+  
+    // 데이터 가져오기
+    fetch(apiBaseUrl)
+      .then(response => {
+          if (!response.ok) {
+              throw new Error('API 요청 실패: ' + response.status);
+          }
+          return response.json();
+      })
+      .then(data => {
+          const tbody = document.querySelector('.kboard-list tbody'); // 기존 테이블의 <tbody>
+          tbody.innerHTML = ''; // 기존 데이터를 비웁니다.
+  
+          data.forEach((post) => {
+              const row = document.createElement('tr');
+  
+              // 공지사항 여부에 따라 클래스 지정
+              if (post.is_notice === 1) {
+                  row.classList.add('kboard-list-notice');
+              }
+  
+              // 각 열(td)을 생성하고 데이터 추가
+              row.innerHTML = `
+                  <td class="kboard-list-uid">${post.is_notice === 1 ? '공지사항' : post.id}</td>
+                  <td class="kboard-list-title">
+                      <a href="#" class="post-link" data-id="${post.id}">
+                          <div class="kboard-default-cut-strings">${post.title}</div>
+                      </a>
+                  </td>
+                  <td class="kboard-list-user">${post.author}</td>
+                  <td class="kboard-list-date">${new Date(post.created_at).toLocaleDateString()}</td>
+                  <td class="kboard-list-vote">${post.likes}</td>
+                  <td class="kboard-list-view">${post.views}</td>
+              `;
+  
+              tbody.appendChild(row);
+          });
+
+           // API를 통해 관리자 비밀번호 검증
+      async function validatePassword(password) {
+          const response = await fetch(validatePasswordUrl, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ password })
+          });
+  
+          if (!response.ok) {
+              throw new Error('비밀번호 검증 실패');
+          }
+  
+          const result = await response.json();
+          return result.valid;
+      }
+  
+      // 글쓰기 버튼 클릭 이벤트
+      document.querySelector('.kboard-control a').addEventListener('click', async (event) => {
+          event.preventDefault(); // 기본 동작 방지
+          const password = prompt('관리자 비밀번호를 입력해주세요:');
+          if (!password) return;
+  
+          try {
+              const isValid = await validatePassword(password);
+              if (isValid) {
+                  // 비밀번호가 맞으면 글쓰기 페이지로 이동
+                  window.location.href = '/write.html';
+              } else {
+                  alert('비밀번호가 올바르지 않습니다.');
+              }
+          } catch (err) {
+              console.error('비밀번호 검증 에러:', err);
+              alert('비밀번호 검증 중 오류가 발생했습니다.');
+          }
+      });
+  
+          // 제목 클릭 이벤트 처리
+          document.querySelectorAll('.post-link').forEach(link => {
+              link.addEventListener('click', (event) => {
+                  event.preventDefault(); // 기본 링크 이동 방지
+                  const postId = event.target.closest('.post-link').dataset.id;
+  
+                  // 상세 페이지로 바로 이동
+                  window.location.href = `/post.html?id=${postId}`;
+              });
+          });
+      })
+      .catch(err => {
+          console.error('API 호출 에러:', err);
+          alert('데이터를 불러오지 못했습니다.');
+      });
+  </script>
+
+
+<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

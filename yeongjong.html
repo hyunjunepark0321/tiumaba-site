@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+
+.responsive-img {
+    width: 100%; /* 부모 요소의 너비에 맞게 */
+    height: auto; /* 비율을 유지하면서 자동 조정 */
+    display: block; /* 하단에 불필요한 여백 제거 */
+    margin: 0 auto; /* 중앙 정렬 */
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">영종 연구소(인천 영종)</div>
+		</div>
+        <div class="letter-background">
+            <div class="letter-section">
+                <p><strong>영종연구소에서는 생태수업과 ABA사회성 대그룹 수업을 진행합니다 </strong></p>
+                <p>수업 시간에 관찰했던 생물들을, 영종 생태교실에서 실제로 관찰하고 함께하며 자유롭고 즐겁게 배울 기회를 제공합니다.</p>
+                <p>생태교실에 대한 자세한 정보는 프로그램 탭의 생태교실 페이지를 확인해 주세요.</p>
+                <p>
+                    <img decoding="async" src="/CSS/image/place_pic/jong.png" alt="" class="responsive-img">
+                </p>
+                <p>영종연구소 생태교육장 지도(보물찾기 용)와 사진</p>
+                <hr>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+	
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>티움 ABA 사회성연구소</title>
+    <link rel="stylesheet" href="style.css"> <!-- 스타일 시트 연결 -->
+</head>
+<link href="/CSS/common_style.css" rel="stylesheet" type="text/css" />
+<style>
+	.image-container {
+    background-image: url('./CSS/image/page_thumnail/default.jpg');
+}
+</style>
+<body>
+
+    <!-- Header를 불러오기 -->
+    <div id="header-placeholder"></div>
+
+    <main>
+        <div class="image-container">
+			<div class="overlay"></div>
+			<div class="centered-text">상담신청</div>
+		</div>
+		<div class="letter-background">
+			<div class="letter-section">
+       
+
+                <p><a href="form.pdf" target="_blank">상담신청서 PDF 양식 다운로드</a></p>
+    <p>  <img decoding="async" src="/CSS/image/form/form.jpg" alt="상담지 양식" class="responsive-img">티움ABA사회성연구소의 수업을 원하시는 경우 위의 신청서를 작성하여 </span><strong style="font-size: 12pt;"><a href="mailto:tiumaba@naver.com">tiumaba@naver.com</a></strong><span style="font-size: 12pt;">으로 보내주시거나, 해당 내용을 이메일에 직접 기재해주세요.</span></p>
+    <p><span style="font-size: 12pt;"> 상담 신청서에 수업을 원하시는 지역(송도/노원/영종/목동)을 반드시 표기해 주세요.</span></p>
+    <p><span style="font-size: 12pt;"> 본 자료의 저작권은 티움ABA 사회성연구소와 티움 의사소통연구소에 있으며, 무단 전재 및 배포를 금합니다.</span></p>
+    <hr>
+    
+    
+    <p></p>
+       
+        
+			
+			</div>
+			</div>
+    </main>
+
+    <!-- Footer를 불러오기 -->
+    <div id="footer-placeholder"></div>
+	<button id="scrollToTopBtn" class="scroll-to-top">
+		<img src="/CSS/image/icon/top_btn.png" alt="Top" />
+	</button>
+    <script>
+        // header.html 파일을 불러와 삽입
+        fetch('header.html')
+    .then(response => response.text())
+    .then(data => {
+        document.getElementById('header-placeholder').innerHTML = data;
+    })
+    .then(() => {
+        // header.html이 로드된 후에 header.js를 로드
+        const script = document.createElement('script');
+        script.src = '/JS/header.js';
+        document.body.appendChild(script);
+    });
+
+        // footer.html 파일을 불러와 삽입
+        fetch('footer.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            });
+    </script>
+		<script src="/JS/scrollToTop.js"></script>
+</body>
+</html>
