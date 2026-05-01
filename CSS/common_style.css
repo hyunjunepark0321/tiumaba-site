@@ -198,3 +198,11 @@ h6 {
         height: 100%; /* 부모 요소의 높이에 맞춤 */
         border: 0; /* 테두리 제거 */
     }
+
+    .name {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: #2c3e50;
+}
